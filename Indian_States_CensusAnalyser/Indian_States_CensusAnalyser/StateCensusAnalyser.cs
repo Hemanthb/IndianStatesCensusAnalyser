@@ -83,7 +83,10 @@ namespace Indian_States_CensusAnalyser
             {
                 throw new CustomException(CustomException.ExceptionType.INVALID_DELIMITER, "Invalid Delimiter");
             }
-            
+            catch (HeaderValidationException)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_HEADER, "Invalid Headers");
+            }
 
         }
     }
