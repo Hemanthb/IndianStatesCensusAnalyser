@@ -74,11 +74,17 @@ namespace Indian_States_CensusAnalyser
                 }
                 throw new CustomException(CustomException.ExceptionType.INVALID_EXTENSION, "Invalid File Extension");
             }
-            catch(Exception e)
+            catch(CustomException e)
             {
                 Console.WriteLine(e.Message);
                 return 0;
-            }      
+            }
+            catch (MissingFieldException)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_DELIMITER, "Invalid Delimiter");
+            }
+            
+
         }
     }
 }
