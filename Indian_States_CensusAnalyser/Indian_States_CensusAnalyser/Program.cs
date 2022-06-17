@@ -1,0 +1,2 @@
+﻿Indian_States_CensusAnalyser.StateCensusAnalyser censusAnalyser = new Indian_States_CensusAnalyser.StateCensusAnalyser();
+censusAnalyser.AnalyseStateCensus();
