@@ -19,6 +19,7 @@ namespace Indian_States_CensusAnalyser
                 {
                     if (File.Exists(file))
                     {
+                         
                         using (var reader = new StreamReader(file))
                         using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
                         {
@@ -33,11 +34,15 @@ namespace Indian_States_CensusAnalyser
                 }
                 throw new CustomException(CustomException.ExceptionType.INVALID_EXTENSION, "Invalid File Extension");
             }
-            catch (Exception e)
+            catch (CustomException e)
             {
                 Console.WriteLine(e.Message);
                 return 0;
                 
+            }
+            catch (HeaderValidationException e)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_DELIMITER, "Invalid Delimiter");
             }
     }
     }

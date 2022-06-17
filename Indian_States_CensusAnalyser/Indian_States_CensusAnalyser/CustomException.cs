@@ -10,7 +10,7 @@ namespace Indian_States_CensusAnalyser
     {
         public enum ExceptionType
         {
-            INVALID_FILE,INVALID_EXTENSION
+            INVALID_FILE,INVALID_EXTENSION,INVALID_DELIMITER
         }
         ExceptionType exception;
         public CustomException(ExceptionType exception,string message):base(message)
