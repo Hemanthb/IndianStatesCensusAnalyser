@@ -10,11 +10,11 @@ namespace Indian_States_CensusAnalyser
     public class StateCensusAnalyser
     {
         
-        public int AnalyseStateCensus()
+        public int AnalyseStateCensus(string file)
         {
             List<CSVStateCensus> stateCensus = new List<CSVStateCensus>();
             int csvRowCount;
-            string file = @"D:\blabz_fellowship\IndianStatesCensusAnalyser\Indian_States_CensusAnalyser\Indian_States_CensusAnalyser\StateCensusData.csv";
+            
             using (var reader = new StreamReader(file))
             using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
             {
