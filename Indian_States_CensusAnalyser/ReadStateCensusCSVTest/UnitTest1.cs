@@ -95,6 +95,21 @@ namespace ReadStateCensusCSVTest
                 Assert.AreEqual("Invalid File", e.Message);
             }
         }
+        [Test]
+        public void GivenWrongStateCodeFileExtn_HandleException_ThrowsException()
+        {
+            try
+            {
+                string file = @"D:\blabz_fellowship\IndianStatesCensusAnalyser\Indian_States_CensusAnalyser\Indian_States_CensusAnalyser\Report\StateCode.cs";
+                Indian_States_CensusAnalyser.StateCensusAnalyser stateCensus = new Indian_States_CensusAnalyser.StateCensusAnalyser();
+                int actualCount = stateCensus.AnalyseStateCensus(file);
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("Invalid File Extension", e.Message);
+            }
 
         }
+
+    }
     }
