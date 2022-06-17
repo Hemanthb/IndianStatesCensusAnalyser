@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
+using MissingFieldException = CsvHelper.MissingFieldException;
 
 namespace Indian_States_CensusAnalyser
 {
@@ -40,10 +41,14 @@ namespace Indian_States_CensusAnalyser
                 return 0;
                 
             }
-            catch (HeaderValidationException e)
+            catch (MissingFieldException)
             {
                 throw new CustomException(CustomException.ExceptionType.INVALID_DELIMITER, "Invalid Delimiter");
             }
-    }
+            catch (HeaderValidationException)
+            {
+                throw new CustomException(CustomException.ExceptionType.INVALID_HEADER, "Invalid Headers");
+            }
+        }
     }
 }
