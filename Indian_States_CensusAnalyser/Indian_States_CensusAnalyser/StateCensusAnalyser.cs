@@ -50,5 +50,21 @@ namespace Indian_States_CensusAnalyser
                 throw new CustomException(CustomException.ExceptionType.INVALID_HEADER, "Invalid Headers");
             }
         }
+
+        public int AnalyseStateCodes(string file)
+        {
+            //List<StateCodes> stateCode = new List<StateCodes>();
+            int csvRowCount;
+            using (var reader = new StreamReader(file))
+                        using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
+                        {
+                            var list = csvReader.GetRecords<StateCodes>().ToList();
+                            csvRowCount = list.Count;
+                            Console.WriteLine("RowCount is -" + csvRowCount);
+
+                        }
+                        return csvRowCount;
+                   
+        }
     }
 }

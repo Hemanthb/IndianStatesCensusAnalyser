@@ -14,4 +14,12 @@ namespace Indian_States_CensusAnalyser
         public string AreaInSqKm { get; set; }
         public string DensityPerSqKm { get; set; }
     }
+
+    public class StateCodes
+    {
+        public string SrNo { get; set; }
+        public string StateName { get; set; }
+        public string TIN { get; set; }
+        public string StateCode { get; set; }
+    }
 }
