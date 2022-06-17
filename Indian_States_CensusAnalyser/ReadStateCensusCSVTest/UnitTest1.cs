@@ -72,6 +72,15 @@ namespace ReadStateCensusCSVTest
             }
 
         }
+        [Test]
+        public void GivenStateCodeCsvReport_FetchAllData_ReturnRowCount()
+        {
+            string file = @"D:\blabz_fellowship\IndianStatesCensusAnalyser\Indian_States_CensusAnalyser\Indian_States_CensusAnalyser\Reports\StateCode.csv";
+            Indian_States_CensusAnalyser.StateCensusAnalyser stateCensus = new Indian_States_CensusAnalyser.StateCensusAnalyser();
+            int actualCount = stateCensus.AnalyseStateCodes(file);
+            Assert.AreEqual(37, actualCount);
+
+        }
 
     }
 }

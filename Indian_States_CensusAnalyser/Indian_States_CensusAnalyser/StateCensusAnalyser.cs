@@ -53,17 +53,16 @@ namespace Indian_States_CensusAnalyser
 
         public int AnalyseStateCodes(string file)
         {
-            //List<StateCodes> stateCode = new List<StateCodes>();
             int csvRowCount;
             using (var reader = new StreamReader(file))
-                        using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
-                        {
-                            var list = csvReader.GetRecords<StateCodes>().ToList();
-                            csvRowCount = list.Count;
-                            Console.WriteLine("RowCount is -" + csvRowCount);
+            using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
+            {
+                var list = csvReader.GetRecords<StateCodes>().ToList();
+                csvRowCount = list.Count;
+                Console.WriteLine("RowCount is -" + csvRowCount);
 
-                        }
-                        return csvRowCount;
+            }
+            return csvRowCount;
                    
         }
     }
