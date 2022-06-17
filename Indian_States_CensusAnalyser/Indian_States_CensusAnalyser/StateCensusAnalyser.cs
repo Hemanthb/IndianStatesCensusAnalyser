@@ -13,26 +13,30 @@ namespace Indian_States_CensusAnalyser
         public int AnalyseStateCensus(string file)
         {
             List<CSVStateCensus> stateCensus = new List<CSVStateCensus>();
-            int csvRowCount=0;
+            int csvRowCount;
             try {
-                if (File.Exists(file))
+                if (Path.GetExtension(file) == ".csv")
                 {
-                    using (var reader = new StreamReader(file))
-                    using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
+                    if (File.Exists(file))
                     {
-                        var list = csvReader.GetRecords<CSVStateCensus>().ToList();
-                        csvRowCount = list.Count;
-                        Console.WriteLine("RowCount is -" + csvRowCount);
+                        using (var reader = new StreamReader(file))
+                        using (var csvReader = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture))
+                        {
+                            var list = csvReader.GetRecords<CSVStateCensus>().ToList();
+                            csvRowCount = list.Count;
+                            Console.WriteLine("RowCount is -" + csvRowCount);
 
+                        }
+                        return csvRowCount;
                     }
-                    
+                    throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
                 }
-                return csvRowCount;
-
+                throw new CustomException(CustomException.ExceptionType.INVALID_EXTENSION, "Invalid File Extension");
             }
             catch (Exception e)
             {
-                throw new CustomException(CustomException.ExceptionType.INVALID_FILE, "Invalid File");
+                Console.WriteLine(e.Message);
+                return 0;
                 
             }
     }
